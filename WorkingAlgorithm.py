@@ -1,5 +1,6 @@
 import sys
 import math
+import os
 from collections import namedtuple
 
 
@@ -15,6 +16,17 @@ def getWeight(node1, node2):
     weight = math.hypot(node1.x - node2.x, node1.y - node2.y)
     return int(round(weight))
 
+def getInput(fileName, nodeList):
+    thisDirectory = os.path.dirname(os.path.abspath(__file__))
+    inputFile = os.path.join(thisDirectory, fileName)
+    readTextFile = open(inputFile).read().splitlines()
+    for i, val in enumerate(readTextFile):
+        readTextFile[i] = readTextFile[i].split(' ')
+        readTextFile[i] = list(map(int, readTextFile[i]))
+    for i, node in enumerate(readTextFile):
+        currentNode = NodeStruct(node[0], node[1], node[2])
+        nodeList.append(currentNode)
+    return nodeList
 
 #*********************
 #TEST DATA
@@ -55,6 +67,14 @@ print (totalWeight)
 NodeList = [A, B, C, D, E, F, G, H]
 EdgeList = [eA, eB, eC, eD, eE, eF, eG, eH]
 EdgeCount = len(EdgeList)
+
+# Example for getting input
+# =====================================================
+# just showing how to use the input function
+myInput = list() # whatever variable you want to store the nodes in
+getInput('test_example_1.txt', myInput) # looks for a file with this name in the directory of the script
+print myInput
+# =====================================================
 
 #Alters NodeList To a Better Tour
 #Does Not Calculate Weight
