@@ -93,6 +93,33 @@ def printNodeList(nodeList):
     print(nodeStr2)
     return nodeStr2
 
+def getArgs():
+    global cycleCount, fileName
+    argCount = len(sys.argv)
+    if argCount > 3 or argCount < 2:
+        print("Invalid argument count. Please follow usage:")
+        print("python tsp.py <-cycle count> <file name>")
+        print("EX: python tsp.py -3 input.txt")
+        exit(1)
+    if argCount == 2:
+        cycleCount = 3
+        fileName = sys.argv[1]
+        thisDirectory = os.path.dirname(os.path.abspath(__file__))
+        inputFile = os.path.join(thisDirectory, fileName)
+        if not os.path.isfile(inputFile):
+            print("The file: % could not be found in this directory" % fileName)
+            exit(1)
+    elif argCount == 3:
+        cycleCount = sys.argv[1]
+        fileName = sys.argv[2]
+        thisDirectory = os.path.dirname(os.path.abspath(__file__))
+        inputFile = os.path.join(thisDirectory, fileName)
+        if not os.path.isfile(inputFile):
+            print("The file: "+ fileName +" could not be found in this directory")
+            exit(1)
+        cycleCount = cycleCount[:0] + cycleCount[1:]
+        cycleCount = int(cycleCount)
+
 
 # Currently broken due to EdgeStruct incompatibilty
 # def changeEdgeInfo(edgeStrct, newEndNodeNum):
@@ -310,6 +337,11 @@ def optimizePath(origNdList, NodeList, EdgeList):
 
 if __name__ == '__main__':
 
+    # the getArgs function uses global variables. Make sure you have these two variable declared before you call it
+    # fileName = ""
+    # cycleCount = -1
+    # getArgs()
+    
     print("\n***** Main *****\n")
 
     testNode1 = NodeStruct(0, 853, 85)
