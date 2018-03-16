@@ -15,6 +15,7 @@
 import sys
 import math
 import os
+import re
 from collections import namedtuple
 
 
@@ -46,7 +47,9 @@ def getInput(fileName, nodeList):
     inputFile = os.path.join(thisDirectory, fileName)
     readTextFile = open(inputFile).read().splitlines()
     for i, val in enumerate(readTextFile):
-        readTextFile[i] = readTextFile[i].split(' ')
+        val = val.lstrip(' ')
+        val = re.sub(' +', ' ', val)
+        readTextFile[i] = val.split(' ')
         readTextFile[i] = list(map(int, readTextFile[i]))
     for i, node in enumerate(readTextFile):
         currentNode = NodeStruct(node[0], node[1], node[2])
