@@ -214,14 +214,22 @@ def generateTourEdgeList(cityList):
 #Does Not Calculate Weight
 #Need to Modularize Parts into seperate functions
 
-def optimizePath(origNdList, NodeList, EdgeList):
+def optimizePath(numCycles, origNdList, NodeList, EdgeList):
 
     totalTourWeight = getTotalTourWeight(NodeList)
     print("Initial totalTourWeight: ")
     print(totalTourWeight)
-    print("\n")
+    # print("\n")
+    print("")
 
-    numCycles = 3
+    # numCycles = 3
+    print("numCycles: " + str(numCycles))
+    print("")
+    
+    print("\nRunning the algorithm...\n")
+    
+    # print("\n")
+    
     compareEdgesCounter = 0
     swapCount = 0
 
@@ -251,7 +259,7 @@ def optimizePath(origNdList, NodeList, EdgeList):
                     #if New edges are better, replace old edges
                     if(newTotal < existingTotal):
 
-                        print("\n              REPLACE!\n")
+                        # print("\n              REPLACE!\n")
                         
                         swapCount += 1
 
@@ -330,47 +338,49 @@ def optimizePath(origNdList, NodeList, EdgeList):
 
                         replaceTotalTourWeight = getTotalTourWeight(NodeList)
 
-                    else: 
-                        print("    NO SWAP!")
+                    # else: 
+                        # print("    NO SWAP!")
         
         compareEdgesCounter = compareEdgesCounter + 1
 
 if __name__ == '__main__':
 
-    # the getArgs function uses global variables. Make sure you have these two variable declared before you call it
-    # fileName = ""
-    # cycleCount = -1
-    # getArgs()
-    
     print("\n***** Main *****\n")
+    
+    # the getArgs function uses global variables. Make sure you have these two variable declared before you call it
+    fileName = ""
+    cycleCount = -1
+    getArgs()
+    
 
-    testNode1 = NodeStruct(0, 853, 85)
-    testNode2 = NodeStruct(1, 622, 262)
-    print("Edge weight between node1 and node2: ", getWeight(testNode1, testNode2))
-    print("")
 
-    cityList1 = []
+    # testNode1 = NodeStruct(0, 853, 85)
+    # testNode2 = NodeStruct(1, 622, 262)
+    # print("Edge weight between node1 and node2: ", getWeight(testNode1, testNode2))
+    # print("")
 
-    cityList1.append(NodeStruct(0, 200, 800))
-    cityList1.append(NodeStruct(1, 3600, 2300))
-    cityList1.append(NodeStruct(2, 3100, 3300))
-    cityList1.append(NodeStruct(3, 4700, 5750))
-    cityList1.append(NodeStruct(4, 5400, 5750))
-    cityList1.append(NodeStruct(5, 5608, 7103))
-    cityList1.append(NodeStruct(6, 4493, 7102))
-    cityList1.append(NodeStruct(7, 3600, 6950))	
+    # cityList1 = []
 
-    mainTourEdgeList = generateTourEdgeList(cityList1)
+    # cityList1.append(NodeStruct(0, 200, 800))
+    # cityList1.append(NodeStruct(1, 3600, 2300))
+    # cityList1.append(NodeStruct(2, 3100, 3300))
+    # cityList1.append(NodeStruct(3, 4700, 5750))
+    # cityList1.append(NodeStruct(4, 5400, 5750))
+    # cityList1.append(NodeStruct(5, 5608, 7103))
+    # cityList1.append(NodeStruct(6, 4493, 7102))
+    # cityList1.append(NodeStruct(7, 3600, 6950))	
 
-    print("mainTourEdgeList length: ")
-    print(len(mainTourEdgeList))
-    print("printing mainTourEdgeList: ")
-    print(mainTourEdgeList)
-    print("")
+    # mainTourEdgeList = generateTourEdgeList(cityList1)
 
-    for edge in mainTourEdgeList:
-        print(edge)
-    print("")
+    # print("mainTourEdgeList length: ")
+    # print(len(mainTourEdgeList))
+    # print("printing mainTourEdgeList: ")
+    # print(mainTourEdgeList)
+    # print("")
+
+    # for edge in mainTourEdgeList:
+    #     print(edge)
+    # print("")
 
     # print("mainTourEdgeList[7]:")
     # print(mainTourEdgeList[7])
@@ -382,72 +392,83 @@ if __name__ == '__main__':
 
 
     
-    print("")
+    # print("")
     
     # fileNm = "tsp_example_A.txt"
     # fileNm = "tsp_example_B.txt"
     # fileNm = "tsp_example_0.txt"
-    fileNm = "tsp_example_1.txt"
+    # fileNm = "tsp_example_1.txt"
     # fileNm = "tsp_example_2.txt"
     # fileNm = "test-input-1.txt"
     # fileNm = "test-input-1b.txt"
     
+    
     workingNodeList = []
-    getInput(fileNm, workingNodeList)
-    inputNodeListStr = printNodeList(workingNodeList)
-    print(workingNodeList)
-    print("")
+    getInput(fileName, workingNodeList)
+    
+    # inputNodeListStr = printNodeList(workingNodeList)
+    # print(workingNodeList)
+    # print("")
+    
     
     origNodeList = []
-    getInput(fileNm, origNodeList)
-    origNdLstStr = printNodeList(origNodeList)
-    print(origNodeList)    
+    getInput(fileName, origNodeList)
+    
+    # origNdLstStr = printNodeList(origNodeList)
+    # print(origNodeList)    
+    
     
     workingEdgeList = generateTourEdgeList(workingNodeList)
     print("workingEdgeList length: ")
     print(len(workingEdgeList))
-    print("printing workingEdgeList: ")
-    print(workingEdgeList)
-    print("")
+    
+    # print("printing workingEdgeList: ")
+    # print(workingEdgeList)
+    # print("")
 
-    for edge in workingEdgeList:
-        print(edge)
-    print("")    
+    # for edge in workingEdgeList:
+    #     print(edge)
+    # print("")    
     
     
     
     totalTourWeight = getTotalTourWeight(workingNodeList)
-    print("Initial totalTourWeight: ")
-    print(totalTourWeight)
-    print("\n")    
+    # print("Initial totalTourWeight: ")
+    # print(totalTourWeight)
+    # print("\n")    
         
         
         
     #Call Function
     # optimizePath()
-    optimizePath(origNodeList, workingNodeList, workingEdgeList)
+    # def optimizePath(numCycles, origNdList, NodeList, EdgeList):
+    optimizePath(cycleCount, origNodeList, workingNodeList, workingEdgeList)
     
-    print("\n\nMain: After running optimizePath(), workingNodeList: ")
-    print(workingNodeList)
+    
+    
+    
+    # print("\n\nMain: After running optimizePath(), workingNodeList: ")
+    # print(workingNodeList)
     
     # print("\nMain: NodeList:")
     # for node in NodeList:
     #     print(node.number)
     # print("\n")
     
-    print("\nMain: Initial NodeList")
-    print(inputNodeListStr)
+    # print("\nMain: Initial NodeList")
+    # print(inputNodeListStr)
     
-    print("\nMain: Final NodeList")
-    finalNodeListStr = printNodeList(workingNodeList)
+    # print("\nMain: Final NodeList")
+    # finalNodeListStr = printNodeList(workingNodeList)
     
-    print ("\nFinal Edge List")
-    print(workingEdgeList)
+    # print ("\nFinal Edge List")
+    # print(workingEdgeList)
     
-    print("\nOriginal Tour")
-    print(origNodeList)
+    # print("\nOriginal Tour")
+    # print(origNodeList)
+    # origNdLstStr2 = printNodeList(origNodeList)
     
-    origNdLstStr2 = printNodeList(origNodeList)
+    print("Number of cities: " + str(len(workingNodeList)) + "\n")
     
     print("Main: Initial totalTourWeight: ")
     print(totalTourWeight)
@@ -456,3 +477,10 @@ if __name__ == '__main__':
     print("Main: finalTotalTourWeight: ")
     print(finalTotalTourWeight)
     print("\n")        
+
+    print("Input file: " + str(fileName))
+    print("Saving Results.")
+    saveResults(fileName, workingNodeList, finalTotalTourWeight)
+    
+    print("\nDONE!\n")
+    
