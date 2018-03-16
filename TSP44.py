@@ -56,6 +56,16 @@ def getInput(fileName, nodeList):
         nodeList.append(currentNode)
     return nodeList
 
+def saveResults(fileName, nodeList, finalWeight):
+    tourFile = fileName + ".tour"
+    writeFile = open(tourFile, 'a+')
+    writeFile.write("%s" % finalWeight)
+    writeFile.write("\n")
+    for i, node in enumerate(nodeList):
+        writeFile.write("%s" % nodeList[i].number)
+        writeFile.write("\n")
+    writeFile.close()
+
 
 def getTotalTourWeight(nodeList):
     nodeCount = len(nodeList)
