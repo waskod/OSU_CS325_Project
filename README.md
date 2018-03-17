@@ -2,7 +2,7 @@
 This is our groups implementation of the traveling salesman problem.
 
 *******
-Please Note, we have two seperate algorithms and files.
+Please Note, we have two separate algorithms and files.
   1. 2-opt.py
   2. NearestNeighbor.py
 *******
@@ -23,6 +23,18 @@ test-input-6.txt  -- 2-opt.py
 test-input-7.txt  -- NearestNeighbor.py
 
 
+However, for the Competition, to meet the under 3 minute requirement, 
+the following must be run:
+
+3 Minute Time Limit
+test-input-1.txt  -- 2-opt.py
+test-input-2.txt  -- 2-opt.py
+test-input-3.txt  -- 2-opt.py
+test-input-4.txt  -- 2-opt.py
+test-input-5.txt  -- NearestNeighbor.py
+test-input-6.txt  -- NearestNeighbor.py
+test-input-7.txt  -- NearestNeighbor.py
+
 
 Instructions:
 
@@ -37,9 +49,18 @@ Instructions:
 
     if the number of cycles is not specified, the program will default to 3
 
-    Example:
+	
+    Examples:
+	
+	Default:
 
+	$ python 2opt.py inputFile.txt
+	
+	
+	Run for 2 cycles of algorithm:
+	
     $ python 2opt.py -2 inputFile.txt
+ 
  
  NearestNeighbor.py
   To run this program, place in directory with input file.  
